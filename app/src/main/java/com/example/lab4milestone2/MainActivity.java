@@ -70,8 +70,8 @@ public class MainActivity extends AppCompatActivity {
             String address = "Could not find Address";
             List<Address> listAddresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
 
-            if(listAddresses != null){
-
+            if(listAddresses != null && listAddresses.size() > 0){
+                Log.i("PlaceInfo", listAddresses.get(0).toString());
                 address = "Address: \n";
 
                 if(listAddresses.get(0).getSubThoroughfare()!=null){
@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             TextView addressTextView = (TextView) findViewById(R.id.Address);
-            add.setText(address);
+            addressTextView.setText(address);
 
         } catch (IOException e) {
             e.printStackTrace();
